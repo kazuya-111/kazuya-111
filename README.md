@@ -37,7 +37,6 @@
 ## 🌱 Currently Learning
 - Advanced Python & System Design  
 - AI/ML Applications  
-- Open-source contribution workflows  
 
 ---
 
