@@ -16,15 +16,18 @@
 
 ---
 
-## 📂 Featured Projects
-- [**Makerspace Booking System**](https://github.com/username/makerspace-booking-system)  
-  Prototype of a campus booking system focusing on backend design and database integration (Python, SQL).  
+## 🚀 Featured Project: Weave (GovHack 2025)
+[Weave Repository](https://github.com/VanessaSoetjiadi/weave)
 
-- [**Risk Register Tool**](https://github.com/username/risk-register-tool)  
-  Scenario-based risk management tool with bilingual documentation, built using Python and PostgreSQL.  
+Weave is a multilingual community forum application developed during **GovHack 2025**.  
+It aims to strengthen civic participation by:
+- 🌐 AI-powered translation & community FAQ agents  
+- 📰 Automated news summarisation of government updates and local events  
+- 📊 Identifying trending community topics  
+- 🎨 Profile customization rewards to boost engagement  
 
-- [**UI/UX Wireframes**](https://github.com/username/uiux-wireframes)  
-  User-centered design prototypes and wireframes for coursework projects.  
+This project was a collaborative effort, showcasing skills in **web development, AI integration, and civic tech innovation**.
+  
 
 ---
 
