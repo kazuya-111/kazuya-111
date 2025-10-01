@@ -244,7 +244,18 @@ def update_profile():
                 else:
                     print("Not a valid command, please try again.")
 
+import os
 
+def read_file(filename, profile_list):
+    script_dir = os.path.dirname(__file__)   # このスクリプトがあるフォルダ
+    file_path = os.path.join(script_dir, filename)
+
+    try:
+        with open(file_path, "r") as infile:
+            for line in infile:
+                profile_list.append(line.strip())
+    except FileNotFoundError:
+        print(f"Error: {file_path} not found.")
 
    
 profile_list=[]
