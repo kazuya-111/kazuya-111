@@ -29,8 +29,8 @@
 ---
 
 ## 📊 GitHub Stats
-![Kazuya's GitHub stats](https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=radical)  
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact)  
+![Kazuya's GitHub stats](https://github-readme-stats.vercel.app/api?username=kazuya-111&show_icons=true&theme=radical)  
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=kazuya-111&layout=compact)  
 
 ---
 
