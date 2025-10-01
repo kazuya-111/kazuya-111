@@ -1,0 +1,171 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\ddwtassignment2\\views\\patients\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|solutionrelative:ddwtassignment2\\views\\patients\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\ddwtassignment2\\views\\patientprocedures\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|solutionrelative:ddwtassignment2\\views\\patientprocedures\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\ddwtassignment2\\views\\encounters\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|solutionrelative:ddwtassignment2\\views\\encounters\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|c:\\users\\kazuy\\desktop\\sabit term2\\infs1025 data driven web technologies\\assginment2\\ddwtassignment2\\ddwtassignment2\\ddwtassignment2\\views\\patients\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|solutionrelative:ddwtassignment2\\views\\patients\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\ddwtassignment2\\views\\patients\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|solutionrelative:ddwtassignment2\\views\\patients\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\ddwtassignment2\\views\\encounters\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|solutionrelative:ddwtassignment2\\views\\encounters\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\ddwtassignment2\\views\\patientprocedures\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|solutionrelative:ddwtassignment2\\views\\patientprocedures\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\ddwtassignment2\\content\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|solutionrelative:ddwtassignment2\\content\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\ddwtassignment2\\content\\bootstrap.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{5694E20F-C82C-48A7-801E-0E951C455BD7}|DDWTAssignment2\\DDWTAssignment2.csproj|solutionrelative:ddwtassignment2\\content\\bootstrap.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Views\\Patients\\Create.cshtml",
+              "RelativeDocumentMoniker": "DDWTAssignment2\\Views\\Patients\\Create.cshtml",
+              "ToolTip": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Views\\Patients\\Create.cshtml",
+              "RelativeToolTip": "DDWTAssignment2\\Views\\Patients\\Create.cshtml",
+              "ViewState": "AgIAABQAAAAAAAAAAAAewBsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-07T07:06:45.638Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Site.css",
+              "DocumentMoniker": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Content\\Site.css",
+              "RelativeDocumentMoniker": "DDWTAssignment2\\Content\\Site.css",
+              "ToolTip": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Content\\Site.css",
+              "RelativeToolTip": "DDWTAssignment2\\Content\\Site.css",
+              "ViewState": "AgIAACIAAAAAAAAAAAAuwLcAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-05-05T10:36:03.553Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Views\\PatientProcedures\\Index.cshtml",
+              "RelativeDocumentMoniker": "DDWTAssignment2\\Views\\PatientProcedures\\Index.cshtml",
+              "ToolTip": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Views\\PatientProcedures\\Index.cshtml",
+              "RelativeToolTip": "DDWTAssignment2\\Views\\PatientProcedures\\Index.cshtml",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAAFgAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-07T05:29:37.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Views\\Encounters\\Index.cshtml",
+              "RelativeDocumentMoniker": "DDWTAssignment2\\Views\\Encounters\\Index.cshtml",
+              "ToolTip": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Views\\Encounters\\Index.cshtml",
+              "RelativeToolTip": "DDWTAssignment2\\Views\\Encounters\\Index.cshtml",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAAGwAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-07T06:11:56.922Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Views\\Patients\\Edit.cshtml",
+              "RelativeDocumentMoniker": "DDWTAssignment2\\Views\\Patients\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Views\\Patients\\Edit.cshtml",
+              "RelativeToolTip": "DDWTAssignment2\\Views\\Patients\\Edit.cshtml",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAAAH8AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-07T08:00:16.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Views\\PatientProcedures\\Details.cshtml",
+              "RelativeDocumentMoniker": "DDWTAssignment2\\Views\\PatientProcedures\\Details.cshtml",
+              "ToolTip": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Views\\PatientProcedures\\Details.cshtml",
+              "RelativeToolTip": "DDWTAssignment2\\Views\\PatientProcedures\\Details.cshtml",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAgwCMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-05T10:51:16.393Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Views\\Encounters\\Details.cshtml",
+              "RelativeDocumentMoniker": "DDWTAssignment2\\Views\\Encounters\\Details.cshtml",
+              "ToolTip": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Views\\Encounters\\Details.cshtml",
+              "RelativeToolTip": "DDWTAssignment2\\Views\\Encounters\\Details.cshtml",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAAAIAAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-05T10:44:52.181Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "bootstrap.css",
+              "DocumentMoniker": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Content\\bootstrap.css",
+              "RelativeDocumentMoniker": "DDWTAssignment2\\Content\\bootstrap.css",
+              "ToolTip": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Content\\bootstrap.css",
+              "RelativeToolTip": "DDWTAssignment2\\Content\\bootstrap.css",
+              "ViewState": "AgIAAN0LAAAAAAAAAAAwwPwLAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-05-07T01:24:07.176Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Views\\Patients\\Index.cshtml",
+              "RelativeDocumentMoniker": "DDWTAssignment2\\Views\\Patients\\Index.cshtml",
+              "ToolTip": "C:\\Users\\kazuy\\Desktop\\SABIT Term2\\INFS1025 Data Driven Web Technologies\\Assginment2\\DDWTAssignment2\\DDWTAssignment2\\DDWTAssignment2\\Views\\Patients\\Index.cshtml",
+              "RelativeToolTip": "DDWTAssignment2\\Views\\Patients\\Index.cshtml",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAGcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-30T06:30:33.094Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

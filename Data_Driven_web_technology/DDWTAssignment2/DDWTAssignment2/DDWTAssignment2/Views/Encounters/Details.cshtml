@@ -1,0 +1,144 @@
+﻿@using WebMatrix.Data;
+@{
+    var id = Request.QueryString["id"];
+    var db = Database.Open("GeneralHospitalDB");
+
+    var selectQueryString = @"SELECT DISTINCT
+pa.PatientID,
+pa.FirstName,
+pa.LastName,
+
+en.EncounterID,
+en.StartDateTime,
+en.EndDateTime,
+en.EncounterType,
+en.Code,
+en.Description,
+en.BaseEncounterCost,
+en.TotalClaimCost,
+en.PayerCoverage,
+ISNULL(en.ReasonCode, 'None') AS ReasonCode,
+ISNULL(en.ReasonDescription,'None') AS ReasonDescription
+
+FROM
+Patients AS pa
+
+LEFT JOIN
+PatientProcedures AS pp ON pa.PatientID = pp.PatientID
+
+LEFT JOIN
+Procedures AS pr ON pp.ProcedureID = pr.ProcedureID
+
+LEFT JOIN
+Encounters AS en ON en.EncounterID = pr.EncounterID
+
+WHERE
+pa.PatientID = @0";
+
+
+    var data = db.QuerySingle(selectQueryString, id);
+
+}
+
+
+@if (data != null)
+{
+    <div class="my-title-jumbotron mt-2 py-1">
+        <div class="row">
+            <div class="col mb-2">
+                <h2 class="text-center text-white">Patient Encounter</h2>
+                <h4 class="text-center text-white">Encounter ID:@data.EncounterID</h4>
+            </div>
+        </div>
+    </div>
+    <div class="cc-jumbotron">
+        <div class="row mb-2 mt-4 justify-content-around">
+
+            <div class="col-4">
+                <label for="PatientName"><b>Patient Name:</b></label>
+                <p>@data.FirstName @data.LastName</p>
+            </div>
+            <div class="col-4">
+                <label for="PatientID"><b>Patient ID:</b></label>
+                <p>@data.patientID</p>
+            </div>
+            <div class="col-4">
+                <label for="EncounterCode"><b>Encounter Code:</b></label>
+                <p>@data.Code</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col-5 mb-2">
+            <div class="cc-jumbotron">
+                <h3 class="text-center text-white mt-2" style="background-color: #536cb2;">Start Date/Time:</h3>
+                <h1 class="text-center">@(((DateTime)data.StartDateTime).ToString("dddd, MMMM dd, yyyy hh:mm tt"))</h1>
+            </div>
+        </div>
+
+
+        <div class="col-5 mb-2">
+            <div class="cc-jumbotron">
+                <h3 class="text-center text-white mt-2" style="background-color: #536cb2;">End Date/Time:</h3>
+                <h1 class="text-center">@(((DateTime)data.EndDateTime).ToString("dddd, MMMM dd, yyyy hh:mm tt"))</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="cc-jumbotron">
+        <div class="row mb-3 mt-4 justify-content-around">
+
+
+            <div class="col-2">
+                <label for="BaseCost"><b>Base cost:</b></label>
+                <p>@data.BaseEncounterCost.ToString("C")</p>
+            </div>
+            <div class="col-2">
+                <label for="TotalClaimCost"><b>Total claim cost:</b></label>
+                <p>@data.TotalClaimCost.ToString("C")</p>
+            </div>
+            <div class="col-2">
+                <label for="PayerCoverage"><b>Payer coverage:</b></label>
+                <p>@data.PayerCoverage.ToString("C")</p>
+            </div>
+            <div class="col-2">
+                <label for="ReasonCode"><b>Reason code:</b></label>
+                <p>@data.ReasonCode</p>
+            </div>
+            <div class="col-2">
+                <label for="ReasonDescription"><b>Reason description:</b></label>
+                <p>@data.ReasonDescription</p>
+            </div>
+
+        </div>
+    </div>
+}
+else
+{
+
+    <div class="my-no-results-jumbotron mt-2 py-1">
+        <div class="row mb-3">
+            <div class="col">
+                <h2 class="text-center">No data. Please enter back button</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <div class="text-center">
+                <a href="/Encounters/Index?id=@Request.QueryString["id"]" class="btn my-btn-primary w-25">Back</a>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row mb-3">
+    <div class="col">
+        <div class="text-center">
+            <a href="/Encounters/Index?id=@Request.QueryString["id"]" class="btn my-btn-primary w-25">Back</a>
+        </div>
+    </div>
+</div>
+

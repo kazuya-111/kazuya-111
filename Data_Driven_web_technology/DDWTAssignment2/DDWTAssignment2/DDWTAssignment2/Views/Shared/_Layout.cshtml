@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Hospital - SAIBT / UniSA Online STEM</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <a class="navbar-brand" href="/">Hospital Records</a>
+
+        <div class="container collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item btn @isActive("Index")">
+                    <a class="nav-link" href="/Home/Index">Home</a>
+                </li>
+
+                <li class="nav-item btn @isActive("Patients")">
+                    <a class="nav-link" href="/Patients/Index">Patients</a>
+                </li>
+
+                <li class="nav-item btn @isActive("Procedures")">
+                    <a class="nav-link" href="/Procedures/Index">Procedures</a>
+                </li>
+
+                @*<li class="nav-item btn @isActive("Encounters")">
+                    <a class="nav-link" href="/Encounters/Index">Encounters</a>
+                </li>*@
+
+                <li class="nav-item btn @isActive("Payers")">
+                    <a class="nav-link" href="/Payers/Index">Payers</a>
+                </li>
+
+
+
+                <li class="nav-item btn @isActive("About")">
+                    <a href="/Home/About" class="nav-link">About</a>
+                </li>
+                <li class="nav-item btn @isActive("Contact")">
+                    <a href="/Home/Contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main class="container">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                @RenderBody()
+            </div>
+        </div>
+        <hr />
+
+    </main>
+    <footer class="container text-center">
+        <p>&copy; @DateTime.Now.Year - SAIBT / UniSA Online STEM</p>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+
+    @functions {
+
+        public string isActive(string q)
+        {
+            string str = "";
+            if (q == ViewBag.Active) { str = "active btn-warning"; }
+            return str;
+        }
+    }
+
+</body>
+</html>

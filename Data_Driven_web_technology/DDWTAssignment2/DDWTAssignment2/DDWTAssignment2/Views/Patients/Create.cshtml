@@ -1,0 +1,170 @@
+﻿@*
+    To create a new PatientID, copy-and-paste one of the following GUID's into the input element for the Procedure ID. Alternatively, create a drop-down list (using select) and populate the drop-down list with the following
+    values:
+    (Generated from site: https://www.uuidgenerator.net/guid)
+    9a6b6b67-4712-43b9-9baa-28a3d16d0d5b
+    06f59168-b5e2-4aea-8a69-68ae4131c0c2
+    6df64223-8ace-40df-8437-c7aae48609a8
+    4d3e91cb-5a86-4f9e-a03d-409bdcbf2c56
+    519613c3-fcf2-4602-abc4-d3c1ac15bf97
+
+
+
+*@
+@using WebMatrix.Data;
+
+@{
+    var db = Database.Open("GeneralHospitalDB");
+
+
+
+
+    if (IsPost)
+    {
+
+        var createSql = "INSERT INTO Patients (PatientID,FirstName, LastName, MaidenName, Birthdate, DeathDate, Race, Ethnicity, Gender, Birthplace, AddressID)" +
+                        "VALUES(@0,@1,@2,@3,@4,@5,@6,@7,@8,@9,NULL)";
+
+        var data = db.Execute(createSql, Request.Form["PatientID"],
+                                         Request.Form["FirstName"],
+                                         Request.Form["LastName"],
+                                         Request.Form["MaidenName"],
+                                         Request.Form["Birthdate"],
+                                         Request.Form["DeathDate"],
+                                         Request.Form["Race"],
+                                         Request.Form["Ethnicity"],
+                                         Request.Form["Gender"],
+                                         Request.Form["Birthplace"]);
+
+        if (data > 0)
+        {
+            <div class="row mb-3 mt-2">
+                <div class="col">
+                    <div class="alert alert-success alert-dismissible fadw show" role="alert">
+                        <h2 class="text-center"><strong>Added New Patient</strong></h2>
+                        <p class="text-center">Please Enter Back Button</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="text-center">
+                        <a href="/Patients/Create" class="btn my-btn-primary w-25">Back</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+        else
+        {
+            <div class="my-no-results-jumbotron">
+                <div class="row">
+                    <div class="col">
+                        <p>Error Please enter Back button</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="text-center">
+                        <a href="/Patients/Create" class="btn my-btn-primary w-25">Back</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+    else
+    {
+        <div class="my-title-jumbotron mt-2 py-1 mb-3">
+            <div class="row">
+                <div class="col">
+                    <h2 class="text-center text-white">Add New Patient</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <hr />
+            </div>
+        </div>
+
+        <form method="post" action="/Patients/Create">
+            <div class="cc-jumbotron">
+                <div class="row mb-3 mt-3 form-group">
+                    <div class="col-6">
+                        <label for="PatientID">PatientID</label>
+                        <select id="PatientID" name="PatientID" required class="form-select">
+                            <option value="" disabled selected>Select patientID</option>
+                            <option value="b8b4ede5-c1fb-45ee-99a8-7e3f813a2a16">b8b4ede5-c1fb-45ee-99a8-7e3f813a2a16</option>
+                            <option value="cd71cc4c-67e5-480a-bd83-3436f4dfe8cc">cd71cc4c-67e5-480a-bd83-3436f4dfe8cc</option>
+                            <option value="6aff0cf1-768f-4090-96f8-96efc74e03a8">6aff0cf1-768f-4090-96f8-96efc74e03a8</option>
+                            <option value="f89af041-c785-41ae-8da5-8e0307532c6c">f89af041-c785-41ae-8da5-8e0307532c6c</option>
+                            <option value="9d4784e1-8049-41fc-b455-942da244ddaa">9d4784e1-8049-41fc-b455-942da244ddaa</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="First Name">First Name</label>
+                        <input type="text" required class="form-control" id="FirstName" name="FirstName" />
+                    </div>
+                    <div class="col">
+                        <label for="Last Name">Last Name</label>
+                        <input type="text" required class="form-control" id="LastName" name="LastName" />
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <label for="MaidenName">Maiden Name(if applicable)</label>
+                        <input type="text" class="form-control" id="MaidenName" name="MaidenName" />
+                    </div>
+                    <div class="col-3">
+                        <label for="BirthDate">Birth Date</label>
+                        <input type="date" required class="form-control" id="BirthDate" name="BirthDate" />
+                    </div>
+                    <div class="col-3">
+                        <label for="DeathDate">Death Date(if applicable)</label>
+                        <input type="date" class="form-control" id="DeathDate" name="DeathDate" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-3">
+                        <label for="Race">Race</label>
+                        <input type="text" required class="form-control" id="Race" name="Race" />
+                    </div>
+                    <div class="col-3">
+                        <label for="Ethnicity">Ethinicity</label>
+                        <input type="text" required class="form-control" id="Ethnicity" name="Ethnicity" />
+                    </div>
+                    <div class="col-3">
+                        <label for="Gender">Gender</label>
+                        <select id="Gender" name="Gender" required class="form-select">
+                            <option value="" disabled selected>Select gender</option>
+                            <option value="F">F</option>
+                            <option value="M">M</option>
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <label for="Birthplace">Birthplace</label>
+                        <input type="text" required class="form-control" id="Birthplace" name="Birthplace">
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-12 text-end">
+                        <button type="submit" class="btn my-btn-save w-25 m-3">Save</button>
+                        <button type="reset" class="btn my-btn-reset m-5">Clear</button>
+                        <a href="/Patients/Index" class="btn my-btn-primary">Back</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    }
+}

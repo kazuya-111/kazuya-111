@@ -1,0 +1,209 @@
+﻿@using WebMatrix.Data;
+
+@{
+    //Create and open a cooenct to database
+    var db = Database.Open("GeneralHospitalDB");
+
+    var sql = "";
+    IEnumerable<dynamic> data = Enumerable.Empty<dynamic>();
+
+    if (IsPost)
+    {
+                //Define the SQL query to run
+                sql = @"SELECT
+                pa.PatientID,
+                pa.FirstName,  pa.LastName,
+                pa.Gender,
+                pa.BirthDate,
+                CONCAT(ad.AddressLine, ad.City , ad.State,  ad.County,  ad.Zip) AS address
+
+                FROM
+                Patients AS pa
+
+                LEFT JOIN
+                Address AS ad ON pa.AddressID = ad.AddressID";
+
+
+        if (Request.Form["choose"] == "FirstName")
+        {
+            sql += @" WHERE FirstName LIKE CONCAT(@0, '%') ";
+
+        }
+        else if (Request.Form["choose"] == "LastName")
+        {
+            sql += @" WHERE LastName LIKE CONCAT(@0, '%') ";
+
+        }
+        else if (Request.Form["choose"] == "BirthDate")
+        {
+            sql += @" WHERE BirthDate LIKE CONCAT(@0, '%') ";
+
+        }
+        else if (Request.Form["choose"] == "Address")
+        {
+            sql += @" WHERE CONCAT(ad.AddressLine, ad.City , ad.State,  ad.County,  ad.Zip) LIKE CONCAT(@0, '%') ";
+        }
+
+        sql += @" ORDER BY FirstName ASC";
+
+
+
+        //capture the data returned
+        data = db.Query(sql, Request.Form["searchPatient"]);
+    }
+}
+
+<div class="my-title-jumbotron mb-3">
+<div class="row">
+    <div class="col">
+        <h2 class="text-center text-white">Patient Search</h2>
+    </div>
+    </div>
+</div>
+
+<div class="row mb-3">
+       <div class="col">
+        <hr />
+       </div>
+</div>
+
+
+<div class="cc-jumbotron mb-3">
+    <form method="post" action="/Patients/Index">
+        <div class="row mt-3">
+            <div class="col-3">
+                <label for="choose">Search by:</label>
+                <select name="choose" id="choose" class="form-select">
+                    <option value="" @IsSelected("")>Choose criteria</option>
+                    <option value="FirstName" @IsSelected("FirstName")>First Name</option>
+                    <option value="LastName" @IsSelected("LastName")>Last Name</option>
+                    <option value="BirthDate" @IsSelected("BirthDate")>Birth Date</option>
+                    <option value="Address" @IsSelected("Address")>Address</option>
+                </select>
+            </div>
+            <div class="col-5">
+                <label for="searchPaitent">Search criteria:</label>
+                <input type="text" class="form-control" id="searchPatient" name="searchPatient" value="@Request.Form["searchPatient"]" placeholder="please enter" />
+                <p>Note:Dates must be entered yyyy-mm-dd</p>
+            </div>
+
+            <div class="col-2">
+                <label for="searchPatient"></label>
+                <input class="btn my-btn-primary form-control" type="submit" value="Search">
+            </div>
+
+            <div class="col-2">
+                <label for="addPatient" class="text-white">Create New Patient</label>
+                <a href="/Patients/Create" name="addPatient" class="btn btn-danger" type="submit">New patient</a>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<div class="row mb-3">
+   <div class="col">
+                 <hr />
+   </div>
+</div>
+        
+
+
+            @* True only if both search criteriea have been entered *@
+            @if (!string.IsNullOrEmpty(Request.Form["searchPatient"]) && !string.IsNullOrEmpty(Request.Form["choose"]))
+            {
+
+
+
+                if (data.Count() > 0)
+                {
+                    <div class="cc-jumbotron">
+                    <div class="row">
+                        <div class="col">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Patient Name</th>
+                                        <th scope="col">BirthDate</th>
+                                        <th scope="col">Gender</th>
+                                        <th scope="col">Address</th>
+                                        <th scope="col">Action(s)</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var row in data)
+                                    {
+                                        <tr>
+                                            <td>@row.FirstName @row.LastName</td>
+                                            <td>@row.BirthDate</td>
+                                            <td>@row.Gender</td>
+                                            <td>@row.address</td>
+                                            <td><a href="/Patients/Details?id=@row.PatientID" class="btn my-btn-primary">Patient Details</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="my-no-results-jumbotron">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="text-white text-center">No records returned satisfying the search criteria</h5>
+                            </div>
+                        </div>
+                    </div>
+                   
+
+                }
+
+            }
+
+            @* This is the case when no search criteria has been entered*@
+
+            else
+            {
+                if (IsPost)
+                {
+                    <div class="my-search-criteria-jumbotron mt-2">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="text-center text-white">Both search criteria must be entered</h5>
+                            </div>
+                        </div>
+                    </div>
+
+
+                }
+                else
+                {
+                    <div class="my-search-criteria-jumbotron mt-2">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="text-center text-white">Enter search criteria to begin search</h5>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            }
+
+            @functions {
+
+                string IsSelected(string val)
+                {
+                    string s = null;
+                    if (Request.Form["choose"] == val) { s = "selected"; }
+
+
+                    return s;
+                }
+
+            }
+
+

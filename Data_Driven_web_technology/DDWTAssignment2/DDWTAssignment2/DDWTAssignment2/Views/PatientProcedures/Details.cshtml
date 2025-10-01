@@ -1,0 +1,135 @@
+﻿@using WebMatrix.Data;
+@{
+    var id = Request.QueryString["id"];
+    var db = Database.Open("GeneralHospitalDB");
+
+    var selectQueryString = @"SELECT DISTINCT
+pa.PatientID,
+pa.FirstName,
+pa.LastName,
+
+pr.ProcedureID,
+pr.StartDateTime,
+pr.StopDateTime,
+pr.code,
+pr.BaseCost,
+ISNULL(pr.ReasonCode, 'None') AS ReasonCode,
+ISNULL(pr.ReasonDescription,'None') AS ReasonDescription
+
+FROM
+Patients AS pa
+
+LEFT JOIN
+PatientProcedures AS pp ON pa.PatientID = pp.PatientID
+
+LEFT JOIN
+Procedures AS pr ON pp.ProcedureID = pr.ProcedureID
+
+WHERE
+pa.PatientID = @0";
+
+
+    var data = db.QuerySingle(selectQueryString, id);
+
+}
+
+
+
+@if (data != null)
+{
+    <div class="my-title-jumbotron mt-2 py-1 mb-3">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center text-white">Patient Procedure</h2>
+                <h4 class="text-center text-white">Procedure ID:@data.ProcedureID</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col text-center">
+            <a href="/Procedures/Edit?id=@data.PatientID" class="btn btn-danger w-25">Edit</a>
+        </div>
+    </div>
+    <div class="cc-jumbotron">
+        <div class="row mb-3 mt-3">
+            <div class="col-4">
+                <label for="PatientName"><b>Patient Name:</b></label>
+                <p>@data.FirstName @data.LastName</p>
+            </div>
+            <div class="col-4">
+                <label for="PatientID"><b>Paient ID:</b></label>
+                <p>@data.PatientID</p>
+            </div>
+            <div class="col-4">
+                <label for="ProcedureCode"><b>Procedure Code:</b></label>
+                <p>@data.code</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col-5 mb-3">
+            <div class="cc-jumbotron">
+                <h3 class="text-center text-white mt-2" style="background-color: #536cb2;">Start Date/Time:</h3>
+                <h1 class="text-center">@(((DateTime)data.startDateTime).ToString("dddd, MMMM dd, yyyy hh:mm tt"))</h1>
+                @*https://www.w3schools.com/tags/att_time_datetime.asp*@
+            </div>
+        </div>
+
+
+        <div class="col-5 mb-3">
+            <div class="cc-jumbotron">
+                <h3 class="text-center text-white mt-2" style="background-color: #536cb2;">Stop Date/Time:</h3>
+                <h1 class="text-center">@(((DateTime)data.StopDateTime).ToString("dddd, MMMM dd, yyyy hh:mm tt"))</h1>
+                @*https://www.w3schools.com/tags/att_time_datetime.asp*@
+            </div>
+        </div>
+    </div>
+
+    <div class="cc-jumbotron">
+        <div class="row mb-3 mt-4">
+
+            <div class="col-4">
+                <label for="BaseCost"><b>Base Cost:</b></label>
+                <p>@data.BaseCost.ToString("C")</p>
+            </div>
+            <div class="col-4">
+                <label for="ReasonCode"><b>Reason Code:</b></label>
+                <p>@data.ReasonCode</p>
+            </div>
+            <div class="col-4">
+                <label for="Reason Description"><b>Reason Description:</b></label>
+                <p>@data.ReasonDescription</p>
+            </div>
+
+        </div>
+    </div>
+
+
+}
+else
+{
+    <div class="my-no-results-jumbotron mt-2 py-1">
+        <div class="row mb-3">
+            <div class="col">
+                <h2 class="text-center">No data. Please enter back button</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <div class="text-center">
+                <a href="/PatientProcedures/Index?id=@Request.QueryString["id"]" class="btn my-btn-primary w-25">Back</a>
+            </div>
+        </div>
+    </div>
+
+}
+<div class="row mb-3">
+    <div class="col">
+        <div class="text-center">
+            <a href="/PatientProcedures/Index?id=@Request.QueryString["id"]" class="btn my-btn-primary w-25">Back</a>
+        </div>
+    </div>
+</div>

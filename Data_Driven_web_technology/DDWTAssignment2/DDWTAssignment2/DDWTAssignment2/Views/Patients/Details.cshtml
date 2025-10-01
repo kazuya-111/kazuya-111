@@ -1,0 +1,118 @@
+﻿@using WebMatrix.Data;
+@{
+    var id = Request.QueryString["id"];
+    var db = Database.Open("GeneralHospitalDB");
+
+
+
+    var selectQueryString = @" SELECT Patients.*,ISNULL(numEncounters, 0) AS numEncounters, ISNULL(numProcedures, 0) AS numProcedures,
+CONCAT(Address.AddressLine, ' ', Address.City , ' ', Address.State, ' ',  Address.County, ' ',  Address.Zip) AS address
+FROM Patients
+JOIN Address
+ON Patients.AddressID = Address.AddressID
+
+LEFT JOIN
+(
+SELECT pa.patientID, COUNT(DISTINCT EncounterID) AS numEncounters, COUNT(DISTINCT pp.ProcedureID) AS numProcedures
+FROM Patients AS pa
+JOIN PatientProcedures AS pp
+ON pa.PatientID = pp.PatientID
+JOIN Procedures AS pr
+ON pr.ProcedureID = pp.ProcedureID
+WHERE
+pa.PatientID = @0
+GROUP BY pa.PatientID
+) AS calc
+ON Patients.PatientID = calc.PatientID
+WHERE Patients.PatientID = @0";
+
+
+    var data = db.QuerySingle(selectQueryString, id);
+
+}
+<div class="my-title-jumbotron mt-2 py-1">
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center text-white">Patient Details</h2>
+        </div>
+    </div>
+</div>
+
+
+
+@if (data != null)
+{
+
+    <div class="cc-jumbotron mb-3">
+        <div class="row mt-3">
+            <div class="col-4">
+                <label for="PatientName"><b>Patient Name</b></label>
+                <p>@data.FirstName @data.LastName</p>
+            </div>
+            <div class="col-4">
+                <label for="address"><b>Address</b></label>
+                <p>@data.address</p>
+            </div>
+            <div class="col text-center">
+                <label for="Edit" class="text-white">Edit</label>
+                <p><a href="/Patients/Edit?id=@data.PatientID" class="btn btn-danger w-25">Edit</a></p>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="row mb-3">
+        <div class="col">
+            <hr />
+        </div>
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col-4">
+            <div class="cc-jumbotron">
+                <h3 class="text-center text-white mt-2" style="background-color: #536cb2;">Total Visits:</h3>
+                <h1 class="text-center">@data.numEncounters</h1>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="cc-jumbotron">
+                <h3 class="text-center text-white mt-2" style="background-color: #536cb2;">Total Procedures:</h3>
+                <h1 class="text-center">@data.numProcedures</h1>
+            </div>
+        </div>
+
+        <div class="col-4 text-center">
+            <div class="cc-jumbotron">
+                <h3 class="text-center text-white mt-2 mb-4" style="background-color: #536cb2; margin-bottom: 5px;">Actions:</h3>
+                <a href="/Encounters/Index?id=@data.PatientID" class="btn my-btn-encounter text-white">Encounters</a>
+                <span style="margin-left: 20px;"><a href="/PatientProcedures/Index?id=@data.PatientID" class="btn my-btn-procedure text-white">Procedures</a></span>
+            </div>
+        </div>
+    </div>
+}
+
+else
+{    
+    <div class="my-no-results-jumbotron">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center text-white">No addtional data. Please enter Back button</h2>
+            </div>
+        </div>
+    </div>
+    
+}
+
+<div class="row mb-3">
+    <div class="text-center">
+
+        <a href="/Patients/Index?id=@Request.QueryString["id"]" class="btn my-btn-primary w-25">Back</a>
+
+    </div>
+</div>
+
+
+
+
+

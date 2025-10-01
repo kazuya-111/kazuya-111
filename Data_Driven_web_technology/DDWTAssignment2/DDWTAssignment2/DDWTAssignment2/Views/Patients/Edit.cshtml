@@ -1,0 +1,233 @@
+﻿@using WebMatrix.Data;
+
+@{
+
+    var db = Database.Open("GeneralHospitalDB");
+
+    var patientSql = @" SELECT *
+FROM Patients
+WHERE PatientID =@0";
+
+
+
+    var patient = db.QuerySingle(patientSql, Request.QueryString["id"]);
+    var patientID = Request.QueryString["id"];
+
+    var formattedDate = "";
+    if (patient.DeathDate != null)
+    {
+        formattedDate = patient.DeathDate.ToString("yyyy-MM-dd");
+    }
+
+
+    if (IsPost)
+    {
+        var firstName = Request.Form["firstName"];
+        var lastName = Request.Form["lastName"];
+
+        var maidenName = Request.Form["MaidenName"];
+        if (string.IsNullOrEmpty(maidenName))
+        {
+            maidenName = null;
+        }
+
+        var birthDate = Request.Form["Birthdate"];
+        if (string.IsNullOrEmpty(birthDate))
+        {
+            birthDate = DateTime.Parse(patient.Birthdate);
+        }
+
+        var deathDate = Request.Form["DeathDate"];
+        if (string.IsNullOrEmpty(deathDate))
+        {
+            if (patient.DeathDate == null)
+            {
+                deathDate = null;
+            }
+            else
+            {
+                deathDate = DateTime.Parse(patient.DeathDate);
+            }
+        }
+
+        var race = Request.Form["Race"];
+        var ethnicity = Request.Form["Ethnicity"];
+        var gender = Request.Form["Gender"];
+        var birthplace = Request.Form["Birthplace"];
+
+
+
+        var sql = @"
+    UPDATE Patients
+      SET FirstName = @0,
+          LastName = @1,
+          MaidenName = @2,
+
+          Birthdate = @3,
+          DeathDate = @4,
+          Race = @5,
+          Ethnicity = @6,
+          Gender = @7,
+          Birthplace = @8
+
+          WHERE PatientID = @9";
+
+
+
+        var data = db.Execute(sql, firstName,
+                                      lastName,
+                                      maidenName,
+                                      birthDate,
+                                      deathDate,
+                                      race,
+                                      ethnicity,
+                                      gender,
+                                      birthplace,
+                                      patientID);
+
+
+        if (data > 0)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <h2 class="text-center"><strong>Record Updated. Please enter back button</strong></h2>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="col text-center">
+                        <a href="/Patients/Details?id=@Request.QueryString["id"]" class="btn my-btn-primary w-25">Back</a>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+        else
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <h2 class="text-center"><strong>Update Error!</strong></h2>
+                <p>That record could not be updated:</p>
+
+            </div>
+        }
+
+    }
+
+
+
+    else
+    {
+        <div class="my-title-jumbotron pt-2 mt-1">
+            <h2 class="text-center text-white">Edit Patient Details</h2>
+            <h4 class="text-center text-white">Patient ID: @patient.PatientID</h4>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <hr />
+            </div>
+        </div>
+
+        <form method="post" action="/Patients/Edit?id=@patient.PatientID">
+
+            <div class="cc-jumbotron">
+
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <label for"FirstName">First Name:</label>
+                        <input type="text" id="FirstName" name="FirstName" maxlength="50" required class="form-control"
+                               placeholder="First Name..." title="First Name" value="@patient.FirstName" />
+                    </div>
+
+
+
+                    <div class="col-6">
+                        <label for="LastName">Last Name:</label>
+                        <input type="text" id="LastName" name="LastName" maxlength="50" required class="form-control"
+                               placeholder="Last Name..." title="Last Name" value="@patient.LastName" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <label for="MaidenName">Maiden Name:</label>
+                        <input type="text" id="MaidenName" name="MaidenName" maxlength="50" class="form-control"
+                               placeholder="Maiden Name..." title="Maiden Name" value="@patient.MaidenName" />
+                    </div>
+
+
+
+                    <div class="col-3">
+                        <label for="Birthdate">Birth Date:</label>
+                        <input type="date" id="Birthdate" name="Birthdate" class="form-control"
+                               title="Birthdate" value="@patient.Birthdate.ToString("yyyy-MM-dd")" />
+                    </div>
+
+
+
+                    <div class="col-3">
+                        <label for="Birthdate">Death Date:</label>
+                        <input type="date" id="DeathDate" name="DeathDate" class="form-control"
+                               title="DeathDate" value="@formattedDate" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-3">
+                        <label for="Race">Race:</label>
+                        <input type="text" id="Race" name="Race" required class="form-control"
+                               title="Race" value="@patient.Race" />
+                    </div>
+
+
+
+                    <div class="col-3">
+                        <label for="Ethinicity">Ethinicity:</label>
+                        <input type="text" id="Ethinicity" name="Ethnicity" required class="form-control"
+                               title="Ethnicity" value="@patient.Ethnicity" />
+                    </div>
+
+                    <div class="col-3">
+                        <label for="Gender">Gender:</label>
+                        <select id="Gender" name="Gender" required class="form-select" value="@patient.Gender">
+                            <option value="" disabled>Select gender</option>
+                            <option value="F" @if (patient.Gender == "F") { <text> selected</text>}>F</option>
+                            <option value="M" @if (patient.Gender == "M") { <text> selected</text>}>M</option>
+                            @*https://www.geeksforgeeks.org/how-to-create-optional-html-attributes-with-razor-view-engine/*@
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <label for="Birthplace">Birthplace:</label>
+                        <input type="text" class="form-control" id="Birthplace" name="Birthplace" value="@patient.Birthplace">
+                    </div>
+                </div>
+
+
+                <div class="row form-group justify-content-end">
+                    <div class="col-8 text-end">
+                        <button type="submit" class="btn my-btn-save w-25">Save</button>
+
+                    </div>
+                    <div class="col-2 text-center">
+                        <a href="/Patients/Details?id=@Request.QueryString["id"]" class="btn my-btn-primary">Back</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        @functions{
+
+            string IsSelected(string val)
+            {
+                string s = null;
+                if (Request.Form["Gender"] == val)
+                {
+                    s = "selected";
+                }
+                return s;
+            }
+
+        }
+    }
+}

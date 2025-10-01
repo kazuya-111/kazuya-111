@@ -1,0 +1,49 @@
+﻿
+
+@using WebMatrix.Data;
+@{
+    var db = Database.Open("GeneralHospitalDB");
+
+    /* Note that there are literally ten's of thousands of records in the Procedures table. 
+       Hence why the TOP 50 is included in the sql string. DO NOT remove the TOP 50 or your
+       page will take a very long time to load. 
+
+       No...it is not necessary to display all for the assignment.
+    
+    */
+    var sql = @"SELECT TOP 50 * FROM [Procedures]";
+
+    var data = db.Query(sql);
+
+}
+
+<div class="jumbotron">
+    <h2 class="text-center">Hospital Procedures</h2>
+</div>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Start</th>
+            <th scope="col">Stop</th>
+            <th scope="col">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var row in data)
+        {
+            <tr>
+                <td>@row.ProcedureID</td>
+                <td>@row.StartDateTime</td>
+                <td>@row.StopDateTime</td>
+                <td>@row.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

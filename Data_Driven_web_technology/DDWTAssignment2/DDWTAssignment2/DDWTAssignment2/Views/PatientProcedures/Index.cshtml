@@ -1,0 +1,103 @@
+﻿@using WebMatrix.Data;
+@{
+    var id = Request.QueryString["id"];
+    var db = Database.Open("GeneralHospitalDB");
+
+    var selectQueryString = @"SELECT
+pr.ProcedureID,
+pr.StartDateTime,
+pr.StopDateTime,
+pr.Code,
+pr.Description,
+pa.PatientID
+
+FROM
+Procedures AS pr
+
+JOIN
+PatientProcedures AS pp
+ON pr.ProcedureID = pp.ProcedureID
+
+JOIN
+Patients AS pa
+ON pp.PatientID = pa.PatientID
+
+WHERE pa.PatientID= @0";
+
+    var data = db.Query(selectQueryString, id);
+
+}
+@if (data != null && data.Any())
+{
+    <div class="my-title-jumbotron mt-2 py-1 mb-3">
+        <div class="row mb-3">
+            <div class="col">
+                <h2 class="text-center text-white">Patient Procedures</h2>
+                <p class="text-center text-white">Patient ID: @Request.QueryString["id"]</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mb-3">
+        <div class="col">
+            <div class="text-center">
+                <a href="/Procedures/Create?id=@data.ElementAt(0)ProcedureID" class="btn btn-danger w-25">New Procedure</a>
+            </div>
+        </div>
+    </div>
+}
+
+@if (data != null && data.Any())
+{
+    <div class="cc-jumbotron mb-3">
+        <div class="row">
+            <div class="col">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Procedure ID</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Code</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var row in data)
+                        {
+                            <tr>
+                                <td>@row.procedureID</td>
+                                <td>@row.StartDateTime</td>
+                                <td>@row.StopDateTime</td>
+                                <td>@row.Code</td>
+                                <td>@row.Description</td>
+                                <td><a href="/PatientProcedures/Details?id=@row.PatientID" class="btn my-btn-procedure-detail">Details</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+else
+{
+    <div class="my-no-results-jumbotron mt-2 py-1">
+        <div class="row mb-3">
+            <div class="col">
+                <h2 class="text-white text-center">No record. Please enter back button</h2>
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="row">
+    <div class="col text-center">
+        <a href="/Patients/details?id=@Request.QueryString["id"]" class="btn my-btn-primary w-25">Back</a>
+    </div>
+</div>
