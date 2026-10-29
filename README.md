@@ -1,6 +1,6 @@
 # Hi, I'm Kazuya, please call me Kazu👋
 
-🎓 IT student @ University of South Australia (Bachelor in progress, Diploma of IT with High Distinction)  
+🎓 IT student @ Adelaide University (Bachelor in progress, Diploma of IT with High Distinction)  
 💻 Skilled in Python, SQL, Software Testing, and Backend Systems  
 🌏 Bilingual (Japanese / English) with 10+ years of client-facing & managerial experience in Japan  
 🚀 Interested in open-source developer tools, backend architecture, and bridging engineering with sales  
